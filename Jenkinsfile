@@ -1,44 +1,43 @@
 pipeline {
     agent any
-    
+   
     stages {
         stage('Build') {
             steps {
-                script {
-                    sh '''
-                    set -e  # Stop the script if any command fails
-                    g++ -o PES1UG22CS477-1 pes1ug22cs477.cpp  # Compile the C++ file
-                    chmod +x PES1UG22CS477-1  # Ensure it is executable
-                    '''
-                }
+                sh '''
+                    echo "Building the C++ application..."
+                    g++ -o PES1UG22CS477-1 main.cpp
+                    echo "Build stage completed."
+                '''
             }
         }
-        
+       
         stage('Test') {
             steps {
-                script {
-                    sh '''
-                    echo "Running the compiled program..."
-                    ./PES1UG22CS477-1  # Execute the program
-                    '''
-                }
+                sh '''
+                    echo "Testing the C++ application..."
+                    ./PES1UG22CS477-1
+                    echo "Test stage completed."
+                '''
             }
         }
-        
+       
         stage('Deploy') {
             steps {
-                echo 'Deploying application...' 
-                // Add deployment steps here if needed
+                sh '''
+                    echo "Deploying the application..."
+                    echo "Deployment completed successfully."
+                '''
             }
         }
     }
-    
+   
     post {
         failure {
-            echo 'Pipeline failed! Please check the logs.'
+            echo 'Pipeline failed'
         }
         success {
-            echo 'Pipeline executed successfully!'
+            echo 'Pipeline completed successfully'
         }
     }
 }
