@@ -5,11 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh '''
-                    set -e  # Stop the script if any command fails
-                    g++ -o PES1UG22CS477-1 pes1ug22cs477.cpp  # Compile the C++ file
-                    chmod +x PES1UG22CS477-1  # Ensure it is executable
-                    '''
+                    sh 'g++ -o PES1UG22CS477-1 pes1ug22cs477.cpp' // Compile the C++ file
                 }
             }
         }
@@ -17,10 +13,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh '''
-                    echo "Running the compiled program..."
-                    ./PES1UG22CS477-1  # Execute the program
-                    '''
+                    sh './PES1UG22CS477-1' // Run the compiled program
                 }
             }
         }
