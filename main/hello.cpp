@@ -6,7 +6,7 @@ int main(void) {
   cout << "Hello, World\n";
   cout << "Hello, Jenkins\n";
   cout << "I have successfully built and run this  \n";
-  cout << "PES1UG22CS477_Rishita  \n";
+  cout << "PES1UG22CS526_Sanjana  \n";
   cout << "Jenkins  \n";
   return 0;
 }
